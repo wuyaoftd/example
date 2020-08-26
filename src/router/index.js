@@ -5,6 +5,8 @@ Vue.use(VueRouter)
 
 import Index from '../views/Index.vue'
 import FirstPage from '../views/FirstPage.vue'
+import SecondPage from '../views/SecondPage.vue'
+import NoPage from '../views/404.vue'
 
 
 const routes = [
@@ -17,6 +19,16 @@ const routes = [
         path: '/firstpage',
         name: "firstpage",
         component: FirstPage
+    },
+    {
+        path: '/secondpage/:id',
+        name: "secondpage",
+        component: SecondPage
+    },
+    {
+        path: '*',
+        name: "any",
+        component: NoPage
     },
 ]
 
