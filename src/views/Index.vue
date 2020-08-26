@@ -1,12 +1,16 @@
 <template>
-    <div>
+    <div class="wrapper">
         index
 
         <button @click="handleClick">first</button>
         <button @click="handleClick2">second</button>
-        <button @click="handleClick2">second</button>
         <button @click="handleClick404">404</button>
         <button @click="handleFetch">fetch</button>
+
+        <button @click="handleChild">child</button>
+
+        <div v-for="item in 100"
+             :key="item">{{item}}</div>
 
     </div>
 </template>
@@ -50,11 +54,20 @@
                 }, rej => {
                     console.log('rej', rej)
                 })
+            },
+            handleChild() {
+                this.$router.push({ name: "child" })
             }
+
         }
 
     }
 </script>
 
 <style>
+    .wrapper > * {
+        display: block;
+        text-align: center;
+        margin: 10px auto;
+    }
 </style>
