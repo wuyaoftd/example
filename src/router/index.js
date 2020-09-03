@@ -7,6 +7,8 @@ import Index from '../views/Index.vue'
 import FirstPage from '../views/FirstPage.vue'
 import SecondPage from '../views/SecondPage.vue'
 
+import Parent from '../views/Parent.vue'
+
 import Child from '../views/Child.vue'
 import ChildChild from '../views/ChildChild.vue'
 
@@ -34,6 +36,12 @@ const routes = [
         path: '/secondpage/:id',
         name: "secondpage",
         component: SecondPage
+    },
+    {
+        path: '/parent',
+        name: "parent",
+        component: Parent
+
     },
     {
         path: '/child',

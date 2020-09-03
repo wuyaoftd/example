@@ -7,7 +7,9 @@
         <button @click="handleClick404">404</button>
         <button @click="handleFetch">fetch</button>
 
+        <button @click="handleParent">parent</button>
         <button @click="handleChild">child</button>
+        <button @click="handleTryCatch">testTryCatch</button>
 
         <div v-for="item in 100"
              :key="item">{{item}}</div>
@@ -49,15 +51,52 @@
                 }
                 fetch(url, config).then((res) => {
                     console.log('res', res)
-                    console.log('res', URL.createObjectURL(res.body))
-                    // console.log('res.data.json()', res.data.json())
+
                 }, rej => {
                     console.log('rej', rej)
                 })
             },
+            handleParent() {
+                this.$router.push({ name: "parent" })
+            },
             handleChild() {
                 this.$router.push({ name: "child" })
+            },
+            async handleTryCatch() {
+                try {
+                    // setTimeout(() => {
+                    //     throw new Error("this is Error")
+                    // }, 1000);
+                    try {
+                        await this.returnPromise()
+
+
+                    } catch (error) {
+                        console.log('里面的catuch', error)
+                    }
+
+                } catch (error) {
+                    console.log('catch error', error)
+                }
+                finally {
+                    console.log('finally')
+                }
+                console.log('outside')
+            },
+
+            returnPromise() {
+                return new Promise((res, rej) => {
+                    setTimeout(() => {
+
+
+                        rej(123)
+                    }, 1000);
+                })
             }
+
+
+
+
 
         }
 
